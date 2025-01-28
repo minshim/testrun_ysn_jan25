@@ -1,0 +1,397 @@
+/* main contents 2024 */
+
+
+.contents {
+  display: flex;
+  height: 90vh;
+  overflow: hidden; /* 親要素にはスクロールさせない */
+  flex-grow: 1;  
+  flex-wrap: nowrap;
+  }
+
+.leftside, .rightside {
+overflow-y: auto;
+border-right: 1px solid var(--grayA);
+
+}
+
+@media (max-width: 720px) {
+  .contents {
+    height: 100%; 
+    flex-wrap: wrap;
+    overflow:scroll; /* 親要素にはスクロールさせない */
+  }
+}
+
+
+/* leftside */
+
+.leftside {
+flex: 1; /* 左側は2つの単位 */
+display: relative;
+width: 50vw;
+background: linear-gradient(to top, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+}
+
+
+@media only screen and (max-width: 720px){
+  .leftside {
+    width: 90vw;
+    height: 100%;
+  }
+  }
+
+.highlight {
+  text-decoration: underline;
+  text-underline-position: under; 
+  text-decoration-style: dotted;
+}
+
+
+
+/* details */
+
+details { 
+display: block; /* as default*/
+margin: 0;
+padding: 0;
+border: none;
+outline: none !important; /* フォーカスの枠線を削除 */
+}
+
+summary {
+cursor: pointer; 
+position: relative; /* 擬似要素の位置調整に使用 */
+padding-right: 20px; /* アイコン用のスペースを確保 */
+display: block; /* default is inline */
+margin: 0 0 5px 0;
+padding: 0;
+cursor: pointer; /* デフォルトのクリック可能なカーソルを解除 */ 
+}
+
+details summary {
+list-style: none; 
+}
+
+summary { outline: none; }
+
+details summary::-webkit-details-marker {
+display: none; /* for safari*/
+}
+
+details {
+  -webkit-tap-highlight-color: transparent; /* タップ時のハイライトを無効化 */
+}
+.answer {
+  overflow: hidden;
+}
+/* タップやクリック時の強調表示を無効化 */
+details:focus, details:active {
+  outline: none !important; /* フォーカス時の枠線を無効化 */
+  -webkit-tap-highlight-color: transparent; /* タップ時のハイライトを無効化 */
+}
+
+/* plus icons */
+summary::after {
+content: "+"; 
+position: absolute;
+right: 0; 
+top: 10px;
+font-size: 1.4em;
+line-height: 1;
+}
+
+details[open] summary::after {
+content: "−"; 
+font-size: 1.4em;
+line-height: 1;
+}
+
+details details summary::after {
+  content: none !important; /* コンテンツを完全に削除 */
+  display: none !important; /* 完全に非表示にする */
+  position: static !important; /* 位置指定をリセット */
+}
+
+.section-container {
+margin-bottom: 25px;
+}
+
+.section-title {
+font-family: Hershey-Futural--15, sans-serif;
+font-size: 2rem;
+}
+
+@media only screen and (max-width: 720px){
+
+  summary::after {
+
+    font-size: 1.2em;
+    line-height: 0.5;
+    }
+    
+    details[open] summary::after {
+    content: "−"; 
+    font-size: 1.2em;
+    line-height: 0.8;
+    }
+
+  .section-title {
+    font-size: 1.5rem;
+    }
+}
+
+.section-title::after {
+content:"";
+display:block;
+border-bottom: 1px dotted var(--grayA);
+margin-bottom: 10px;
+}
+
+details .section-txtbox p {
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2; /* 1行目のみ表示 */
+overflow: hidden; /* 残りは非表示 */
+}
+
+details[open] .section-txtbox p {
+-webkit-line-clamp: unset; /* 開くとすべてのテキストが表示される */
+overflow: visible; /* 見えるようにする */
+}
+
+
+/* item:sub */
+
+.item-sub {
+  border: 1px dotted var(--grayA);
+  border-radius: 6px;
+  width: fit-content;
+  padding: 3px 8px;
+}
+
+body.dark-mode .item-sub {
+    border: 1px dotted var(--softyellow);
+}
+
+
+
+/* detail open animation */
+
+/* details summary ~ * {
+  animation-duration: 2s;
+}
+
+details[open] summary ~ * {
+  animation-name: expand;
+}
+
+/* 開閉用のkeyframes */
+/* @keyframes expand {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 800px; /* 内容の最大高さに調整 
+    opacity: 1;
+  }
+}
+ */
+
+
+.table01,
+.table02 {
+margin-top:10px;
+width: 95%;
+border-collapse: collapse;
+table-layout: fixed;
+}
+
+
+/* .table01 td {
+  background-color: var(--softyellow);
+  filter: brightness(1.1);
+} */
+
+table th,
+table td {
+border: 1px dotted var(--grayA);
+text-align: center;
+padding: 10px;
+font-size: 0.8rem;
+}
+
+body.dark-mode table th,
+body.dark-mode table td  {
+border: 1px dotted var(--softyellow);
+}
+
+.table01 thead th:nth-child(1) {
+  box-sizing: border-box;
+}
+
+
+
+
+/* --- main contents rightside--- */
+
+
+/* --- main contents rightside--- */
+
+.rightside {
+  display: flex;
+  flex: 1; /* 右側は1つの単位 */
+  height: 100%; 
+  }
+  
+  .gallery-container {
+  flex: 1; /* 均等にスペースを分割 */
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: auto; /* 必要に応じて縦スクロールを表示 */
+  white-space: nowrap;
+  max-width: 100%;  /* 画像が親要素に収まるように */
+  }
+  
+  .gallery-item {
+  cursor: pointer;
+  
+  }
+  
+  .gallery-container img {
+  max-height: 100%; /* 画像の高さを親要素に合わせる */
+  cursor: pointer; /* クリック可能であることを示す */
+  transition: transform 0.2s ease; /* ホバー時の拡大アニメーション */
+
+  }
+  
+  @media only screen and (max-width: 720px){
+  .rightside {
+  display: flex;
+  flex: 0.3; /* 右側は1つの単位 */
+  border-right: 0px;
+  overflow: auto;
+  }
+  
+  .gallery-container {
+  flex-direction: column;
+  padding:5px;
+  gap: 3px;
+  }
+  
+  .gallery-item {
+    width:100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* 正方形を維持 */
+    }
+
+  
+  .gallery-container img {
+
+    height: 110px;
+    }
+  }
+
+
+
+/* --- gallery modal --- */
+
+.modal {
+display: none; /* 初期状態では非表示 */
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw; /* 画面全体 */
+height: 100vh; /* 画面全体 */
+justify-content: center;
+align-items: center;
+background-color: var(--softyellow);
+z-index: 150; /* ヘッダーやフッターより上に表示 */
+}
+
+.modal-content {
+width: 90vw; /* 横幅90% */
+height: auto;
+max-height: 85vh; /* 縦の最大サイズを画面の90%に */
+object-fit: contain; /* 画像のアスペクト比を維持 */
+box-shadow: none; /* シャドウを完全に無効化 */
+filter: none;     /* ぼかしや効果を無効化 */
+}
+
+.modal.open {
+display: flex; /* モーダルを表示する */
+}
+.close-button {
+position: absolute;
+top: 50px; /* モーダルの上から10px */
+right: 50px; /* モーダルの右から10px */
+font-size: 100px; /* フォントサイズ */
+font-weight: bold; /* 太字 */
+color: var(--grayA); /* ボタンの色 */
+cursor: pointer; /* クリックできることを示す */
+z-index: 160; /* モーダル内で最前面に配置 */
+transition: color 0.3s;
+}
+
+figure {
+margin: 0; /* デフォルトの余白をリセット */
+text-align: center; /* キャプションを中央揃え */
+}
+
+#modal-caption {
+margin: 10px 20px; /* 画像との間隔 */
+font-size: 0.8rem; /* キャプションの文字サイズ */
+color: var(--grayA); 
+}
+
+
+
+
+.thumbs-container{
+display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: flex-start;
+align-items: flex-end;
+gap: 6px;
+
+}
+
+.picsinthumbs {
+height: 100px;
+width:100px;
+border-radius: 10px;
+object-fit: cover;
+cursor: pointer;
+}
+
+@media only screen and (max-width: 720px){
+  .picsinthumbs {
+    height: 70px;
+    width: 70px;
+    border-radius: 8px;
+}
+}
+
+
+@media only screen and (max-width: 720px){
+  .picsinthumbs {
+    height: 70px;
+    width: 70px;
+    border-radius: 8px;
+  }
+
+    .ysn-footer::after {
+      content: ""; /* 空にする */
+      position: absolute;
+      display: none;
+      width: 30px;
+      height: 30px;
+      right: 10px;
+      bottom:40px;
+      background-image: url("bau/img/logo/ysn_g_4pt.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      }
+}
