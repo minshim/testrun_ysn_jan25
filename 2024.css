@@ -311,26 +311,32 @@ z-index: 150; /* ヘッダーやフッターより上に表示 */
 }
 
 .modal-content {
-width: 90vw; /* 横幅90% */
+width: 90vw; 
 height: auto;
-max-height: 85vh; /* 縦の最大サイズを画面の90%に */
-object-fit: contain; /* 画像のアスペクト比を維持 */
-box-shadow: none; /* シャドウを完全に無効化 */
-filter: none;     /* ぼかしや効果を無効化 */
+max-height: 85vh; 
+object-fit: contain; 
+box-shadow: none; 
+filter: none;     
+}
+
+@media only screen and (max-width: 720px){
+  .modal-content {
+  max-height: 65vh; 
+}
 }
 
 .modal.open {
-display: flex; /* モーダルを表示する */
+display: flex; 
 }
 .close-button {
 position: absolute;
 top: 50px; /* モーダルの上から10px */
-right: 50px; /* モーダルの右から10px */
-font-size: 100px; /* フォントサイズ */
-font-weight: bold; /* 太字 */
-color: var(--grayA); /* ボタンの色 */
-cursor: pointer; /* クリックできることを示す */
-z-index: 160; /* モーダル内で最前面に配置 */
+right: 50px; 
+font-size: 100px; 
+font-weight: bold;
+color: var(--grayA); 
+cursor: pointer; 
+z-index: 160;
 transition: color 0.3s;
 }
 
@@ -340,8 +346,8 @@ text-align: center; /* キャプションを中央揃え */
 }
 
 #modal-caption {
-margin: 10px 20px; /* 画像との間隔 */
-font-size: 0.8rem; /* キャプションの文字サイズ */
+margin: 10px 20px;
+font-size: 0.8rem;
 color: var(--grayA); 
 }
 
