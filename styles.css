@@ -116,10 +116,9 @@ body {
   transform: rotate(0deg); /* 初期回転なし */
 }
 
-@media (max-width: 720px) {
+@media only screen and (max-width: 720px){
 
-
-  .logoA {
+  /* .logoA {
     right: 70px;
     bottom: 200px;
     width: 90px;
@@ -136,6 +135,10 @@ body {
     right: 150px;
     bottom: 100px;
     width: 65px;
+  } */
+
+  .logoA, .logoB, .logoC {
+    display: none;
   }
 
 }
